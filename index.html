@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Your Date</title>
+<style>
+:root{
+  --plum:#2b1b3d; --lilac:#f6f2fb; --gold:#f2b632; --teal:#1f7a72; --ink:#241832; --line:#d9cfe6;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--lilac);color:var(--ink);line-height:1.6}
+h1,h2{font-family:"Trebuchet MS",Verdana,sans-serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2rem,6vw,3.4rem)}
+h2{font-size:1.5rem}
+a{color:inherit}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 5vw;background:var(--plum);color:#fff}
+header b{font-family:"Trebuchet MS",Verdana,sans-serif;font-size:1.2rem}
+header a{color:var(--gold);text-decoration:none;font-family:"Trebuchet MS",Verdana,sans-serif}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:48px 5vw;max-width:1100px;margin:auto}
+.hero img{width:100%;height:auto;border-radius:var(--radius);display:block}
+.hero p{max-width:46ch;font-size:1.1rem}
+.btn{display:inline-block;background:var(--gold);color:var(--plum);font:700 1rem "Trebuchet MS",Verdana,sans-serif;padding:14px 26px;border:0;border-radius:999px;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(.95)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.prices{max-width:1100px;margin:auto;padding:0 5vw 48px}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.plan.ac{border:2px solid var(--teal)}
+.plan .cost{font:700 2.2rem "Trebuchet MS",Verdana,sans-serif;margin:.2em 0}
+.plan p{margin:0 0 16px}
+.birthday{background:var(--plum);color:#fff;padding:40px 5vw}
+.birthday .in{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;max-width:1100px;margin:auto}
+.birthday img{width:100%;max-width:420px;height:auto;justify-self:center}
+.birthday p{max-width:46ch}
+.book{max-width:640px;margin:auto;padding:48px 5vw}
+form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:16px}
+label{display:grid;gap:6px;font:600 .95rem "Trebuchet MS",Verdana,sans-serif}
+input,select,textarea{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#done{display:none;background:#e5f4f2;border:2px solid var(--teal);border-radius:var(--radius);padding:24px}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.list li{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px}
+.list b{font-family:"Trebuchet MS",Verdana,sans-serif}
+footer{text-align:center;padding:24px;color:#6b5c7d;font-size:.9rem}
+@media(max-width:720px){.hero,.birthday .in,.row{grid-template-columns:1fr}.hero{padding-top:28px}}
+</style>
+</head>
+<body>
+
+<header>
+  <b>Book Your Date</b>
+  <a href="#book">Book now</a>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Reserve your spot in under a minute</h1>
+    <p>Pick a day, choose a time and tell us how many people are coming. We will confirm your booking by email.</p>
+    <a class="btn" href="#book">Book now</a>
+  </div>
+  <!-- MAIN PHOTO: replace the src below with your own photo, e.g. src="photo.jpg" -->
+  <img alt="Our venue" src="photo.png">
+</section>
+
+<section class="prices" aria-label="Prices">
+  <h2>Prices</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>1 hour play</h3>
+      <div class="cost">Rs 200</div>
+      <p>One hour of play time.</p>
+      <a class="btn" href="#book" data-plan="1h">Book 1 hour</a>
+    </div>
+    <div class="plan ac">
+      <h3>3 hours with AC</h3>
+      <div class="cost">Rs 1000</div>
+      <p>Three hours in an air-conditioned space.</p>
+      <a class="btn" href="#book" data-plan="3h">Book 3 hours</a>
+    </div>
+  </div>
+</section>
+
+<section class="birthday" aria-label="Birthday celebrations">
+  <div class="in">
+    <div>
+      <h2>Celebrating a birthday?</h2>
+      <p>Tell us in the booking form and we will get everything ready for the big day.</p>
+    </div>
+    <!-- BIRTHDAY PHOTO: replace the src below with your own image, e.g. src="birthday.jpg" -->
+    <img alt="Happy Birthday cake with candles" src="birthday.png">
+  </div>
+</section>
+
+<section class="book" id="book">
+  <h2>Book your date</h2>
+  <form id="form">
+    <label>Full name
+      <input name="name" required autocomplete="name">
+    </label>
+    <label>Email
+      <input name="email" type="email" required autocomplete="email">
+    </label>
+    <label>Package
+      <select name="plan" id="plan" required>
+        <option value="1 hour play - Rs 200">1 hour play - Rs 200</option>
+        <option value="3 hours with AC - Rs 1000">3 hours with AC - Rs 1000</option>
+      </select>
+    </label>
+    <div class="row">
+      <label>Date
+        <input name="date" type="date" required id="date">
+      </label>
+      <label>Time
+        <select name="time" required>
+          <option value="">Choose a time</option>
+          <option>10:00</option><option>12:00</option><option>14:00</option><option>16:00</option><option>18:00</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label>Guests
+        <input name="guests" type="number" min="1" max="50" value="2" required>
+      </label>
+      <label>Occasion
+        <select name="occasion">
+          <option>Regular booking</option>
+          <option>Birthday</option>
+          <option>Other celebration</option>
+        </select>
+      </label>
+    </div>
+    <label>Notes (optional)
+      <textarea name="notes" rows="3"></textarea>
+    </label>
+    <button class="btn" type="submit">Confirm booking</button>
+  </form>
+
+  <div id="done" role="status" tabindex="-1">
+    <h2 id="doneTitle">Booking received</h2>
+    <p id="doneText"></p>
+    <button class="btn" type="button" id="again">Make another booking</button>
+  </div>
+
+  <h2 style="margin-top:40px">Bookings</h2>
+  <ul class="list" id="list"></ul>
+</section>
+
+<footer>&copy; <span id="yr"></span> Book Your Date</footer>
+
+<script>
+var form=document.getElementById('form'),done=document.getElementById('done');
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('date').min=new Date().toISOString().split('T')[0];
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(form);
+  var bday=d.get('occasion')==='Birthday';
+  document.getElementById('doneTitle').textContent=bday?'Happy Birthday, '+d.get('name').split(' ')[0]+'!':'Booking received';
+  document.getElementById('doneText').textContent=d.get('name')+', we have your booking ('+d.get('plan')+') for '+d.get('guests')+' on '+d.get('date')+' at '+d.get('time')+'. A confirmation will be sent to '+d.get('email')+'.';
+  form.style.display='none';done.style.display='block';done.focus();
+  bookings.push({name:d.get('name'),plan:d.get('plan'),date:d.get('date'),time:d.get('time'),guests:d.get('guests')});
+  render();
+});
+var bookings=[{name:'Richard',plan:'1 hour play - Rs 200',date:new Date().toISOString().split('T')[0],time:'16:00',guests:'2'}];
+function render(){
+  var ul=document.getElementById('list');ul.innerHTML='';
+  bookings.forEach(function(b){
+    var li=document.createElement('li'),n=document.createElement('b');
+    n.textContent=b.name;
+    li.appendChild(n);
+    li.appendChild(document.createTextNode(' - '+b.plan+', '+b.date+' at '+b.time+', '+b.guests+' guests'));
+    ul.appendChild(li);
+  });
+}
+render();
+document.querySelectorAll('[data-plan]').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.getElementById('plan').selectedIndex=b.dataset.plan==='3h'?1:0;
+  });
+});
+document.getElementById('again').addEventListener('click',function(){
+  form.reset();form.style.display='grid';done.style.display='none';
+});
+</script>
+</body>
+</html>
